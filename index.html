@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ron Academy Online learning</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Ron<span>Academy</span></h1>
+            </div>
+<<<<<<< HEAD
+            
+            <!-- Hamburger button (visible only on mobile) -->
+            <button class="hamburger-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Wrap nav and auth buttons in a div for mobile collapse -->
+            <div class="nav-collapse">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#homework-help">Homework Help</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="Blog.html">Blog</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="login-btn">Login</button>
+                    <button class="signup-btn">Sign Up</button>
+                </div>
+=======
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#homework-help">Homework Help</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="Blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="login-btn">Login</button>
+                <button class="signup-btn">Sign Up</button>
+>>>>>>> cedf7652bb51a16395ac915a13dde4ef71b8445d
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Learn Without Limits</h2>
+                <p>Access thousands of courses and get expert homework help whenever you need it.</p>
+                <div class="hero-buttons">
+                    <button class="primary-btn"><a href="#courses">Browse Courses</a></button>
+                    <button class="secondary-btn"> <a href="#homework-help">Get Homework Help</a></button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/Images/online-certification-illustration.png" alt="Online Learning">
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2 class="section-title">Popular Courses</h2>
+            <div class="course-grid">
+                <!-- Courses will be loaded dynamically with JavaScript -->
+            </div>
+            <button class="view-all-btn">View All Courses</button>
+        </div>
+    </section>
+
+    <section id="homework-help" class="homework-help">
+        <div class="container">
+            <h2 class="section-title">Homework Help</h2>
+            <div class="help-container">
+                <div class="help-info">
+                    <h3>Stuck on an assignment?</h3>
+                    <p>Our expert tutors are available 24/7 to help you with your homework across various subjects.</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> Expert tutors in all subjects</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 availability</li>
+                        <li><i class="fas fa-check-circle"></i> Money-back guarantee</li>
+                        <li><i class="fas fa-check-circle"></i> Plagiarism-free solutions</li>
+                    </ul>
+                    <button class="primary-btn request-help-btn">Request Help Now</button>
+                </div>
+                <div class="help-form-container">
+                    <form id="homework-help-form" class="help-form">
+                        <h3>Request Homework Help</h3>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="math">Mathematics</option>
+                                <option value="science">Science</option>
+                                <option value="english">English</option>
+                                <option value="history">History</option>
+                                <option value="programming">Programming</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="urgency">Urgency</label>
+                            <select id="urgency" required>
+                                <option value="">Select urgency</option>
+                                <option value="24h">Within 24 hours ($30)</option>
+                                <option value="48h">Within 48 hours ($20)</option>
+                                <option value="7d">Within 7 days ($10)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Assignment Details</label>
+                            <textarea id="description" rows="5" required placeholder="Describe your assignment and any specific requirements..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="file-upload">Upload Files (optional)</label>
+                            <input type="file" id="file-upload">
+                        </div>
+                        <button type="submit" class="primary-btn submit-request-btn">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Students Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <p>"The homework help service saved me during finals week! The tutor explained everything clearly and my grade improved significantly."</p>
+                    <div class="student-info">
+                        <img src="/images/Ezra.jpg" alt="Student">
+                        <div>
+                            <h4>Student 1</h4>
+                            <p>Computer Science Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"I've taken three courses on Ron Academy and each one has been excellent. The instructors are knowledgeable and engaging."</p>
+                    <div class="student-info">
+                        <img src="/images/Ezra.jpg" alt="Student">
+                        <div>
+                            <h4>Student 2</h4>
+                            <p>Business Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"The math homework help was worth every penny. I finally understand calculus concepts that confused me all semester."</p>
+                    <div class="student-info">
+                        <img src="/images/Ezra.jpg" alt="Student">
+                        <div>
+                            <h4>Student 3</h4>
+                            <p>Engineering Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Ron Academy</h2>
+                <p>Ron Academy is an innovative e-learning platform dedicated to providing high-quality education and academic support to students worldwide.</p>
+                <p>Founded in 2023, our mission is to make learning accessible, engaging, and effective for everyone, regardless of their location or background.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>100+</h3>
+                        <p>Students</p>
+                    </div>
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Courses</p>
+                    </div>
+                    <div class="stat">
+                        <h3>20+</h3>
+                        <p>Expert Tutors</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="/images/About Ron Academy.jpg" alt="About Ron Academy">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Have questions or feedback? We'd love to hear from you!</p>
+                    <ul class="contact-details">
+                        <li><i class="fas fa-envelope"><a href="mailto:kemoih01@gmail.com" target="_blank">kemoih01@gmail.com</a></i> </li>
+                        <li><i class="fas fa-phone"><a href="tel:+254114692075">+254114692075</a></i> </li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Boston, MA 02115</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/ezrah.kipkemoi.2025" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/kemoih01" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com/Kemoih" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ezra-kipkemoi-387a72263" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="primary-btn"> <a href="mailto: kemoih01@gmail.com">Send Message</a></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Ron Academy</h3>
+                    <p>Empowering students through accessible education and academic support.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#homework-help">Homework Help</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="Blog.html">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on new courses and features.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ron Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="primary-btn">Login</button>
+            </form>
+            <div class="auth-links">
+                <p>Don't have an account? <a href="#" class="switch-to-signup">Sign up</a></p>
+                <p><a href="#">Forgot password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Create an Account</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" required>
+                </div>
+                <button type="submit" class="primary-btn">Sign Up</button>
+            </form>
+            <div class="auth-links">
+                <p>Already have an account? <a href="#" class="switch-to-login">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="request-confirmation">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="confirmation-content">
+                <i class="fas fa-check-circle"></i>
+                <h2>Request Submitted Successfully!</h2>
+                <p>Your homework help request has been received. A tutor will be assigned to you shortly.</p>
+                <p>You'll receive a confirmation email with payment instructions.</p>
+                <button class="primary-btn close-confirmation">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ron Academy Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --white: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        nav a.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-buttons button {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .login-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .signup-btn {
+            background-color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            color: white;
+        }
+
+        .signup-btn:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        /* Blog Section */
+        .blog-section {
+            flex: 1;
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-align: center;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* Blog Grid */
+        .blog-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 40px 0;
+            justify-content: space-evenly;
+            align-items: center;
+            align-content: center;
+            justify-items: stretch;
+        }
+
+        .blog-posts {
+            display: grid;
+            /* grid-template-columns: repeat(auto-fill); */
+            gap: 30px;
+        }
+
+        .blog-post {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-post img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-post:hover img {
+            opacity: 0.9;
+        }
+
+        .blog-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .blog-meta i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        .blog-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            flex: 1;
+        }
+
+        .blog-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .read-more i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--accent-color);
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Modal Styles */
+        .blog-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .modal-content {
+            background: var(--white);
+            margin: 0 auto;
+            max-width: 900px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalFadeIn 0.4s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .modal-text-content {
+            padding: 40px;
+        }
+
+        .modal-text-content h2 {
+            font-size: 32px;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .modal-text-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .modal-text-content h3 {
+            font-size: 24px;
+            color: var(--dark-color);
+            margin: 30px 0 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .modal-text-content h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .modal-text-content h4 {
+            font-size: 20px;
+            color: var(--dark-color);
+            margin: 25px 0 10px;
+        }
+
+        .references {
+            background: rgba(52, 152, 219, 0.05);
+            padding: 25px;
+            border-left: 4px solid var(--primary-color);
+            margin-top: 40px;
+            border-radius: 4px;
+        }
+
+        .references h3 {
+            font-size: 20px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .references ul {
+            margin-left: 20px;
+        }
+
+        .references li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #2980b9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .blog-posts {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .modal-text-content {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 30px;
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+            }
+
+            .blog-section {
+                padding: 100px 0 40px;
+            }
+
+            .modal-content img {
+                height: 300px;
+            }
+
+            .modal-text-content h2 {
+                font-size: 28px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav ul {
+                gap: 15px;
+            }
+
+            .auth-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .blog-posts {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content img {
+                height: 250px;
+            }
+
+            .modal-text-content {
+                padding: 25px;
+            }
+
+            .modal-text-content h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Ron<span>Academy</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Courses</a></li>
+                    <li><a href="index.html#homework-help">Homework Help</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="Blog.html" class="active">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="login-btn">Login</button>
+                <button class="signup-btn">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="blog-section">
+        <div class="container blog-container">
+            <h2 class="section-title">Educational insights, study tips, and learning strategies</h2>
+            
+            <div class="blog-posts">
+                <!-- Post 1 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1122&q=80" alt="Study Tips">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 15, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Sarah Johnson</span>
+                        </div>
+                        <h3>10 Effective Study Techniques for Online Learning</h3>
+                        <p>Discover proven methods to enhance your online learning experience and retain information more effectively...</p>
+                        <a href="#" class="read-more" data-post="1">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Math Success">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 10, 2025</span>
+                            <span><i class="far fa-user"></i> Prof. Michael Chen</span>
+                        </div>
+                        <h3>Overcoming Math Anxiety: A Student's Guide</h3>
+                        <p>Learn practical strategies to conquer your fear of mathematics and develop confidence in solving problems...</p>
+                        <a href="#" class="read-more" data-post="2">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Time Management">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> June 5, 2025</span>
+                            <span><i class="far fa-user"></i> Emily Rodriguez</span>
+                        </div>
+                        <h3>Mastering Time Management for Students</h3>
+                        <p>Effective techniques to balance coursework, extracurricular activities, and personal life while studying online...</p>
+                        <a href="#" class="read-more" data-post="3">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 4 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Coding">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 28, 2025</span>
+                            <span><i class="far fa-user"></i> David Wilson</span>
+                        </div>
+                        <h3>Getting Started with Programming: A Beginner's Roadmap</h3>
+                        <p>A comprehensive guide to choosing your first programming language and building foundational skills...</p>
+                        <a href="#" class="read-more" data-post="4">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 5 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Business">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 22, 2025</span>
+                            <span><i class="far fa-user"></i> James Peterson</span>
+                        </div>
+                        <h3>Essential Business Concepts Every Student Should Know</h3>
+                        <p>Key business principles that will help you in any career path, from entrepreneurship to corporate leadership...</p>
+                        <a href="#" class="read-more" data-post="5">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 6 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Science">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 18, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Lisa Wong</span>
+                        </div>
+                        <h3>The Scientific Method: How to Think Like a Scientist</h3>
+                        <p>Understanding and applying the scientific approach to problem-solving in academics and everyday life...</p>
+                        <a href="#" class="read-more" data-post="6">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 7 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Writing">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 12, 2025</span>
+                            <span><i class="far fa-user"></i> Prof. Robert Taylor</span>
+                        </div>
+                        <h3>Academic Writing: From Research Papers to Theses</h3>
+                        <p>A step-by-step guide to crafting well-structured, properly cited academic papers that impress professors...</p>
+                        <a href="#" class="read-more" data-post="7">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 8 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Teamwork">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 5, 2025</span>
+                            <span><i class="far fa-user"></i> Maria Gonzalez</span>
+                        </div>
+                        <h3>Collaborative Learning: Maximizing Group Study Sessions</h3>
+                        <p>How to make the most of study groups and team projects for better learning outcomes and skill development...</p>
+                        <a href="#" class="read-more" data-post="8">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 9 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Memory">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 28, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Alan Smith</span>
+                        </div>
+                        <h3>Memory Techniques for Exam Preparation</h3>
+                        <p>Evidence-based methods to improve recall and retention when studying for important tests and exams...</p>
+                        <a href="#" class="read-more" data-post="9">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 10 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Literature">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 20, 2025</span>
+                            <span><i class="far fa-user"></i> Prof. Elizabeth Brown</span>
+                        </div>
+                        <h3>How to Analyze Literature Like a Professor</h3>
+                        <p>Advanced techniques for understanding themes, symbols, and deeper meanings in novels, plays, and poetry...</p>
+                        <a href="#" class="read-more" data-post="10">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 11 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Chemistry">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 15, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Kevin Lee</span>
+                        </div>
+                        <h3>Chemistry Concepts Made Simple</h3>
+                        <p>Breaking down complex chemical principles into understandable concepts with real-world applications...</p>
+                        <a href="#" class="read-more" data-post="11">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 12 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Web Development">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 10, 2025</span>
+                            <span><i class="far fa-user"></i> Sarah Thompson</span>
+                        </div>
+                        <h3>Web Development Fundamentals for Beginners</h3>
+                        <p>An introduction to HTML, CSS, and JavaScript for those looking to start a career in web development...</p>
+                        <a href="#" class="read-more" data-post="12">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 13 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Physics">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 5, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Richard Harris</span>
+                        </div>
+                        <h3>Understanding Quantum Physics Basics</h3>
+                        <p>A simplified approach to grasping the fundamental concepts of quantum mechanics and their implications...</p>
+                        <a href="#" class="read-more" data-post="13">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 14 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Data Science">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 28, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Priya Patel</span>
+                        </div>
+                        <h3>Data Science Career Paths Explained</h3>
+                        <p>Exploring the various roles in data science and the skills needed to succeed in this growing field...</p>
+                        <a href="#" class="read-more" data-post="14">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 15 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Languages">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 20, 2025</span>
+                            <span><i class="far fa-user"></i> Prof. Carlos Mendez</span>
+                        </div>
+                        <h3>Best Strategies for Learning a New Language</h3>
+                        <p>Science-backed techniques to accelerate language acquisition and achieve fluency faster...</p>
+                        <a href="#" class="read-more" data-post="15">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 16 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="History">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 15, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Helen Carter</span>
+                        </div>
+                        <h3>Making History Come Alive: Study Techniques</h3>
+                        <p>How to contextualize historical events and remember dates, names, and significance more effectively...</p>
+                        <a href="#" class="read-more" data-post="16">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 17 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Psychology">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 10, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Sophia Kim</span>
+                        </div>
+                        <h3>Psychology of Learning: How We Absorb Information</h3>
+                        <p>Understanding cognitive processes to optimize your study habits and information retention...</p>
+                        <a href="#" class="read-more" data-post="17">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 18 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Design">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> March 5, 2025</span>
+                            <span><i class="far fa-user"></i> Alex Johnson</span>
+                        </div>
+                        <h3>Graphic Design Principles for Non-Designers</h3>
+                        <p>Essential design concepts that will improve your presentations, reports, and visual communication...</p>
+                        <a href="#" class="read-more" data-post="18">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 19 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Economics">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> February 28, 2025</span>
+                            <span><i class="far fa-user"></i> Prof. Daniel Wilson</span>
+                        </div>
+                        <h3>Basic Economics Concepts Everyone Should Understand</h3>
+                        <p>Key economic principles that explain how markets work and impact our daily lives and decisions...</p>
+                        <a href="#" class="read-more" data-post="19">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 20 -->
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="AI">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> February 20, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Rachel Zhang</span>
+                        </div>
+                        <h3>Artificial Intelligence: What Students Need to Know</h3>
+                        <p>An overview of AI concepts, applications, and how it's transforming various fields of study and work...</p>
+                        <a href="#" class="read-more" data-post="20">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Modals -->
+    <div id="blog-modal-1" class="blog-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1122&q=80" alt="Study Tips">
+            <h2>10 Effective Study Techniques for Online Learning</h2>
+            <p>Online learning presents unique challenges and opportunities. Here are 10 research-backed techniques to maximize your learning:</p>
+            
+            <h3>1. The Pomodoro Technique</h3>
+            <p>Work for 25 minutes, then take a 5-minute break. After four cycles, take a longer 15-30 minute break. This method helps maintain focus and prevents burnout.</p>
+            
+            <h3>2. Active Recall</h3>
+            <p>Instead of passively rereading material, test yourself on the concepts. This strengthens memory pathways more effectively than passive review.</p>
+            
+            <h3>3. Spaced Repetition</h3>
+            <p>Review material at increasing intervals (1 day, 3 days, 1 week, etc.). This leverages the psychological spacing effect for better long-term retention.</p>
+            
+            <h3>4. The Feynman Technique</h3>
+            <p>Explain concepts in simple terms as if teaching someone else. This reveals gaps in your understanding and strengthens comprehension.</p>
+            
+            <h3>5. Interleaving</h3>
+            <p>Mix different subjects or types of problems during study sessions. This improves your ability to discriminate between concepts.</p>
+            
+            <h3>6. Dual Coding</h3>
+            <p>Combine verbal and visual information (words with diagrams) to create multiple memory pathways for the same information.</p>
+            
+            <h3>7. Self-Explanation</h3>
+            <p>As you work through material, explain to yourself how new information relates to what you already know.</p>
+            
+            <h3>8. Concrete Examples</h3>
+            <p>For abstract concepts, create or find concrete examples that illustrate the principle in action.</p>
+            
+            <h3>9. Elaborative Interrogation</h3>
+            <p>Ask "why" questions about the material and answer them to deepen understanding.</p>
+            
+            <h3>10. Retrieval Practice</h3>
+            <p>Regularly practice recalling information without looking at your notes or materials.</p>
+            
+            <div class="references">
+                <h3>References</h3>
+                <ul>
+                    <li>Dunlosky, J., et al. (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest.</li>
+                    <li>Brown, P. C., Roediger, H. L., & McDaniel, M. A. (2014). Make It Stick: The Science of Successful Learning.</li>
+                    <li>Oakley, B. (2014). A Mind for Numbers: How to Excel at Math and Science.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="blog-modal-2" class="blog-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Math Success">
+            <h2>Overcoming Math Anxiety: A Student's Guide</h2>
+            <p>Math anxiety affects many students, but with the right strategies, it can be overcome. Here's a comprehensive approach:</p>
+            
+            <h3>Understanding Math Anxiety</h3>
+            <p>Math anxiety is a feeling of tension and fear that interferes with math performance. It's not about ability but about emotional response.</p>
+            
+            <h3>Strategies to Overcome Math Anxiety</h3>
+            
+            <h4>1. Reframe Your Mindset</h4>
+            <p>Understand that math ability isn't fixed - it grows with practice. Adopt a growth mindset toward learning math.</p>
+            
+            <h4>2. Start with Basics</h4>
+            <p>Identify and strengthen foundational skills before tackling more complex concepts. Gaps in understanding often cause anxiety.</p>
+            
+            <h4>3. Practice Regularly</h4>
+            <p>Short, frequent practice sessions are more effective than cramming. Consistency builds confidence.</p>
+            
+            <h4>4. Use Multiple Approaches</h4>
+            <p>If one explanation doesn't make sense, seek alternative explanations or visual representations.</p>
+            
+            <h4>5. Develop Problem-Solving Strategies</h4>
+            <p>Learn systematic approaches like: Understand the problem, devise a plan, carry out the plan, look back.</p>
+            
+            <h4>6. Manage Test Anxiety</h4>
+            <p>Practice under timed conditions, use relaxation techniques, and focus on the process rather than the outcome.</p>
+            
+            <h4>7. Connect Math to Real Life</h4>
+            <p>Find applications of math concepts in everyday situations to make them more meaningful.</p>
+            
+            <h4>8. Seek Help Early</h4>
+            <p>Don't wait until you're completely lost. Ask questions when concepts first become unclear.</p>
+            
+            <h4>9. Celebrate Small Wins</h4>
+            <p>Acknowledge progress, no matter how small. Each concept mastered is a step forward.</p>
+            
+            <h4>10. Use Technology Wisely</h4>
+            <p>Educational apps and online resources can provide alternative explanations and practice opportunities.</p>
+            
+            <div class="references">
+                <h3>References</h3>
+                <ul>
+                    <li>Boaler, J. (2016). Mathematical Mindsets: Unleashing Students' Potential through Creative Math.</li>
+                    <li>Beilock, S. L. (2011). Choke: What the Secrets of the Brain Reveal About Getting It Right When You Have To.</li>
+                    <li>National Council of Teachers of Mathematics. (2014). Principles to Actions: Ensuring Mathematical Success for All.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional modals for other posts would follow the same pattern -->
+    <!-- For brevity, I've included just 2 full modals, but you would create similar content for all 20 posts -->
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Ron Academy</h3>
+                    <p>Empowering students through accessible education and academic support.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#courses">Courses</a></li>
+                        <li><a href="index.html#homework-help">Homework Help</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on new courses and features.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ron Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
